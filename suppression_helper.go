@@ -180,7 +180,7 @@ func main() {
 	var confirmation string
 	currentConfig, err := getCurrentConfig(os.Args[2])
 	fatalError(err)
-    db, err := sql.Open("snowflake", os.Args[1] + "@"+os.Getenv("SNOWALERT_ACCOUNT")+"/snowalert?authenticator=externalbrowser&warehouse="+os.Getenv("UPDATE_WAREHOUSE")+"&role="+os.Getenv("UPDATE_ROLE"))
+    db, err := sql.Open("snowflake", os.Args[1] + "@"+os.Getenv("SNOWALERT_ACCOUNT")+"/snowalert?region=eu-west-1&authenticator=externalbrowser&warehouse="+os.Getenv("UPDATE_WAREHOUSE")+"&role="+os.Getenv("UPDATE_ROLE"))
 	fatalError(err)
 	db.SetMaxIdleConns(1)
 	db.SetMaxOpenConns(1)

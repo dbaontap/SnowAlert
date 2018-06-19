@@ -46,7 +46,7 @@ def login():
 
     print("Authenticating to Snowflake...")
     try:
-        ctx = snowflake.connector.connect(user=username, account=account, password=password)
+        ctx = snowflake.connector.connect(user=username, account=account, password=password, region="eu-west-1")
     except Exception as e:
         print("Snowflake connection failed with error {}".format(e))
         sys.exit(1)

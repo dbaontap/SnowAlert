@@ -21,7 +21,7 @@ def db_connect():
         pkb = private_key.private_bytes(encoding=serialization.Encoding.DER, format=serialization.PrivateFormat.TraditionalOpenSSL, encryption_algorithm=serialization.NoEncryption())
 
         try:
-            connection = snowflake.connector.connect(user='snowalert', account=os.environ['SNOWALERT_ACCOUNT'], private_key=pkb)
+            connection = snowflake.connector.connect(user='snowalert', account=os.environ['SNOWALERT_ACCOUNT'], private_key=pkb, region="eu-west-1")
         except Exception as e:
             print("Failed to authenticate with error {}".format(e))
             sys.exit(1)

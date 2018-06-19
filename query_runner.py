@@ -102,7 +102,7 @@ def login():
     pkb = private_key.private_bytes(encoding=serialization.Encoding.DER, format=serialization.PrivateFormat.TraditionalOpenSSL, encryption_algorithm=serialization.NoEncryption())
 
     try:
-        ctx = snowflake.connector.connect(user='snowalert', account=os.environ['account'], private_key=pkb)
+        ctx = snowflake.connector.connect(user='snowalert', account=os.environ['account'], private_key=pkb, region="eu-west-1")
     except Exception as e:
         print("Failed to authenticate with error {}".format(e))
         sys.exit(1)
@@ -123,7 +123,7 @@ def snowalert_query(event):
     pkb = private_key.private_bytes(encoding=serialization.Encoding.DER, format=serialization.PrivateFormat.TraditionalOpenSSL, encryption_algorithm=serialization.NoEncryption())
 
     try:
-        ctx = snowflake.connector.connect(user='snowalert', account=os.environ['account'], private_key=pkb)
+        ctx = snowflake.connector.connect(user='snowalert', account=os.environ['account'], private_key=pkb, region="eu-west-1")
     except Exception as e:
         print("Failed to authenticate with error {}".format(e))
         sys.exit(1)
